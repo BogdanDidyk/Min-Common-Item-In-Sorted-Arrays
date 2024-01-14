@@ -1,11 +1,13 @@
-function getRandomSortedArray(length, min = 0, max = 9) {
-    const arr = [];
+function getRandomInteger(min = 0, max = 9) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-    for (let i = 0; i < length; i++) {
-        arr[i] = Math.floor(Math.random() * (max - min + 1)) + min;
-    }
+function getRandomIntegerArray(length, min, max) {
+    return Array.from({length}, () => getRandomInteger(min, max));
+}
 
-    return arr.sort((a, b) => a - b);
+function getSortedArrayByAsc(arr) {
+    return [...arr].sort((a, b) => a - b);
 }
 
 function getMinCommonItem(arr1, arr2, arr3) {
@@ -23,9 +25,9 @@ function getMinCommonItem(arr1, arr2, arr3) {
     return undefined;
 }
 
-const arr1 = getRandomSortedArray(10);
-const arr2 = getRandomSortedArray(8);
-const arr3 = getRandomSortedArray(9);
+const arr1 = getSortedArrayByAsc(getRandomIntegerArray(10));
+const arr2 = getSortedArrayByAsc(getRandomIntegerArray(8));
+const arr3 = getSortedArrayByAsc(getRandomIntegerArray(9));
 
 console.log(arr1);
 console.log(arr2);
